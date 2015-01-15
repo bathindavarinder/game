@@ -39,6 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -55,8 +57,31 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bhabo\config.xml" />
+    <Content Include="Bhabo\www\bhabo.html" />
+    <Content Include="Bhabo\www\BhaboApp.js" />
+    <Content Include="Bhabo\www\css\bhabo.css" />
+    <Content Include="Bhabo\www\css\index.css" />
+    <Content Include="Bhabo\www\css\jquery.mobile-1.0.1.css" />
+    <Content Include="Bhabo\www\css\jquery.mobile.structure-1.0.1.css" />
+    <Content Include="Bhabo\www\img\logo.png" />
+    <Content Include="Bhabo\www\img\WZ9Od.gif" />
+    <Content Include="Bhabo\www\Index.html" />
+    <Content Include="Bhabo\www\js\bhabo.js" />
+    <Content Include="Bhabo\www\js\CustomFunctions.js" />
+    <Content Include="Bhabo\www\js\GameHub.js" />
+    <Content Include="Bhabo\www\js\handlebars-v2.0.0.js" />
+    <Content Include="Bhabo\www\js\index.js" />
+    <Content Include="Bhabo\www\js\interact-1.2.2.js" />
+    <Content Include="Bhabo\www\js\interact-1.2.2.min.js" />
+    <Content Include="Bhabo\www\js\jquery.mobile-1.0.1.min.js" />
+    <Content Include="Bhabo\www\js\jquery.signalR-2.1.2.js" />
+    <Content Include="Bhabo\www\js\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Bhabo\www\js\require.js" />
+    <Content Include="Bhabo\www\js\signalRHub.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

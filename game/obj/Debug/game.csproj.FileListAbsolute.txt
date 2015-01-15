@@ -1,0 +1,5 @@
+C:\game\game\obj\Debug\game.csprojResolveAssemblyReference.cache
+C:\game\game\bin\game.dll
+C:\game\game\bin\game.pdb
+C:\game\game\obj\Debug\game.dll
+C:\game\game\obj\Debug\game.pdb

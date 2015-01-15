@@ -3,9 +3,9 @@ define(['require', 'CustomFunctions'],
     function (require, custom) {
         //    return signalr;
 
-        if (window.Cordova) {
+        //if (window.Cordova) {
             $.connection.hub.url = "http://bathindavarinder-001-site1.smarterasp.net/signalr";
-        }
+        //}
 
         window.game = $.connection.gameHub;
 
@@ -15,10 +15,17 @@ define(['require', 'CustomFunctions'],
 
 
 
-        window.game.client.StartGame = function (cards) {
-
+        window.game.client.sendCards = function (cards) {
+            var Cards = cards.split(";");
+            var x = 0;
+            var y = 0;
+            $.each(Cards, function (index, name) {
+                var idandcard = name.split('?');
+                var card = '<div data-x="' + x + '" data-y="0" id="' + idandcard[0] + '" class="card ' + idandcard[1] + ' active dropcan" style="transform:translate(' + x + 'px,' + y + 'px);-webkit-transform: translate(' + x + 'px,' + y + 'px);"></div>';
+                $('.ui-page').append(card);
+                x = x + 5;
+            });
         }
-
 
 
 
@@ -221,10 +228,10 @@ define(['require', 'CustomFunctions'],
 
                     $.connection.hub.start().done(function () {
 
-                        //var name = localStorage.getItem("tempName");
+                        var name = localStorage.getItem("Name");
 
                         //var uniqueId = localStorage.getItem("uniqueId");
-                        window.game.server.sendOfflineMessage("me", "my", "self");
+                        window.game.server.register(name);
                    //     window.chat.server.registerUser(uniqueId, name);
 
                     });
