@@ -12,9 +12,17 @@
     margin-right: auto;
     position: relative;
      
-    border: 2px solid black;
+    /*border: 2px solid black;*/
 }
 
+.onTop {
+    position:relative;
+    z-index:99;
+}
+.onTopBelow {
+    position:relative;
+    z-index:89;
+}
 .icon-huge {
     zoom: 1;
     -moz-transform: scale(1);
@@ -173,9 +181,9 @@
 
 
 .card {
-    width: 69px;
-    height: 100px;
-    background: url('http://i.stack.imgur.com/WZ9Od.gif') no-repeat;
+    width: 60px;
+    height: 79px;
+    background: url('../img/WZ9Od.gif') no-repeat;
     background-size: 1300% 500%;
 }
 .card-wide {
@@ -201,3 +209,46 @@
 .card-clubs-q { background-position: 83.333% 50%; }
 .card-clubs-k { background-position: 91.667% 50%; }
 .card-clubs-a { background-position: 100% 50%; }
+
+
+#outer-dropzone {
+  height: 140px;
+}
+
+#inner-dropzone {
+  height: 80px;
+}
+
+.dropzone {
+  background-color: #ccc;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 80%;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.drop-active {
+  border-color: #666;
+}
+
+.drop-target {
+  background-color: #29e;
+}
+
+.drag-drop {
+  display: inline-block;
+  min-width: 40px;
+  padding: 2em 0.5em;
+
+  background-color: #99e;
+  border: solid 2px white;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop { background-color: #4e4; }

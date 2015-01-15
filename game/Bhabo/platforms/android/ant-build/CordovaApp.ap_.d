@@ -29,13 +29,13 @@ C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-port-xhdpi\scre
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\assets\www \
 C:\Game\game\game\Bhabo\platforms\android\assets\_where-is-www.txt \
-C:\Game\game\game\Bhabo\platforms\android\assets\www\bhabo.html \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\BhaboApp.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\cordova.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\cordova_plugins.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\img \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\index.html \
+C:\Game\game\game\Bhabo\platforms\android\assets\www\index3.html \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\plugins \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css\bhabo.css \
@@ -43,7 +43,7 @@ C:\Game\game\game\Bhabo\platforms\android\assets\www\css\index.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css\jquery.mobile-1.0.1.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css\jquery.mobile.structure-1.0.1.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\img\logo.png \
-C:\Game\game\game\Bhabo\platforms\android\assets\www\img\svg-cards.png \
+C:\Game\game\game\Bhabo\platforms\android\assets\www\img\WZ9Od.gif \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\bhabo.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\CustomFunctions.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\handlebars-v2.0.0.js \
