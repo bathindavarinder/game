@@ -1,6 +1,6 @@
 ﻿//var room = {
-define(['require'],
-function (require) {
+define(['require','GameHub'],
+function (require,signal) {
 
     // Application Constructor
     var initialize = function () {
@@ -15,6 +15,7 @@ function (require) {
 
         if (!window.Cordova) {
             $(document).ready(function () {
+               
                 readyFunction();
 
             });
@@ -23,9 +24,7 @@ function (require) {
 
         document.addEventListener("backbutton", function () {
 
-            var name = localStorage.getItem("Name");
-            var room = localStorage.getItem("room");
-            signal.leaveRoom(room, name);
+    
 
         }, false);
 
@@ -41,13 +40,16 @@ function (require) {
         window.background = false;
     };
     var onDeviceReady = function () {                             // called when Cordova is ready
-        if (window.Cordova && navigator.splashscreen) {
-
+        if (window.Cordova) { 
 
             readyFunction();
         }
     };
     var readyFunction = function () {
+
+        $('.ui-loader-default').remove();
+
+        signal.startConnection();
 
         window.background = false;
 
@@ -55,7 +57,7 @@ function (require) {
 
 
 
-        $('.ui-loader-default').remove();
+      
 
         //$('#start').click(function () {
         //    $('#outer-dropzone').addClass("dropzone");

@@ -7,193 +7,78 @@ define(['require', 'CustomFunctions'],
             $.connection.hub.url = "http://bathindavarinder-001-site1.smarterasp.net/signalr";
         }
 
-        window.chat = $.connection.chatHub;
+        window.game = $.connection.gameHub;
 
         var tryingToReconnect = false;
 
-        window.chat.client.updateMembers = function (names) {
-
-            var users = names.split(",");
-            var yourname = localStorage.getItem("Name");
-            $.each(users, function (index, name) {
-                if (name != "") {
-                    if ($('#' + name).length == 0) {
-                        if (yourname != name)
-                            $("#userList").append('<li><a href="#" class="icon chat ui-link" id="' + name + '">' + name + '</li>');
-                    }
-                }
-            });
-
-        };
 
 
-        window.chat.client.confirmJoin = function (name) {
 
-            var encodedMsg = $('<div />').text(name + " Joined").html();
 
-            var yourname = localStorage.getItem("Name");
+        window.game.client.StartGame = function (cards) {
 
-            var msg = $('<li>' + encodedMsg + '</li><br>');
-
-            custom.informMessage(msg, yourname, false);
-
-            if ($('#userList #' + name).length == 0) {
-                if (yourname != name)
-                    $("#userList").append('<li><a href="#" class="icon chat ui-link" id="' + name + '">' + name + '</li>');
-            }
-        };
-        window.chat.client.registerConfirm = function (result) {
-            if (result == "true") {
-
-                localStorage.setItem("Name", localStorage.getItem("tempName"));
-
-                $.ui.loadContent("main", null, null, "fade");
-
-                setTimeout(window.location = "rooms.html", 5000);
-            }
-            else {
-                $(".Info").html("This username is already taken. Please use other name.");
-            }
         }
 
-        window.chat.client.leftRoom = function (name) {
-            $('#userList #' + name).parent().remove();
-            Message(name + " Left.", name, true);
-        };
 
-        window.chat.client.confirmLeft = function () {
-            custom.openRooms();
-        };
+
+
+
+
+         
 
         $.connection.hub.reconnecting(function () {
-            var msg = $('<li> Reconnecting.... </li><br>');
-            custom.informMessage(msg, "Gapshap", true);
-            tryingToReconnect = true;
+            
         });
 
         $.connection.hub.connectionSlow(function () {
-            var msg = $('<li> Connection slow.... </li><br>');
-            custom.informMessage(msg, "Gapshap", true);
+           
 
         });
 
         $.connection.hub.reconnected(function () {
-            tryingToReconnect = false;
-            var myClientId = $.connection.hub.id;
-            var msg = $('<li> Reconnected.... </li><br>');
-            custom.informMessage(msg, "Gapshap", true);
-            if (myClientId != localStorage.getItem("ConnId")) {
-
-                var msg = $('<li> updating connection.... </li><br>');
-
-                custom.informMessage("updating connection....", "Gapshap", true);
-
-                var yourname = localStorage.getItem("Name");
-                window.chat.server.updateConnId(localStorage.getItem("ConnId"), myClientId, yourname);
-                localStorage.setItem("ConnId", myClientId);
-            }
+           
 
         });
 
         $.connection.hub.disconnected(function () {
 
-            if (!window.background) {
-                if (localStorage.getItem("room")) {
-                    $.connection.hub.start().done(function () {
+            //if (!window.background) {
+            //    if (localStorage.getItem("room")) {
+            //        $.connection.hub.start().done(function () {
 
-                        var myClientId = $.connection.hub.id;
-                        var yourname = localStorage.getItem("Name");
-                        if (myClientId != localStorage.getItem("ConnId")) {
-                            window.chat.server.updateConnId(localStorage.getItem("ConnId"), myClientId, yourname);
-                        }
-                        var myClientId = $.connection.hub.id;
+            //            var myClientId = $.connection.hub.id;
+            //            var yourname = localStorage.getItem("Name");
+            //            if (myClientId != localStorage.getItem("ConnId")) {
+            //               // window.chat.server.updateConnId(localStorage.getItem("ConnId"), myClientId, yourname);
+            //            }
+            //            var myClientId = $.connection.hub.id;
 
-                        localStorage.setItem("ConnId", myClientId);
-                        //window.chat.server.updateName(myClientId, $('#displayname').val());
+            //            localStorage.setItem("ConnId", myClientId);
+            //            //window.chat.server.updateName(myClientId, $('#displayname').val());
 
-                        var name = localStorage.getItem("Name");
+            //            var name = localStorage.getItem("Name");
 
-                        var room = localStorage.getItem("room");
-
-
-                        JoinRoom(room, name);
+            //            var room = localStorage.getItem("room");
 
 
-                    });
-                }
+            //            JoinRoom(room, name);
 
-            } else {
-                custom.showNotification("Timeout", "You have been pulled out of room because of no activity");
-                localStorage.setItem("room", undefined);
-                custom.openRooms();
-            }
+
+            //        });
+            //    }
+
+            //} else {
+            //    custom.showNotification("Timeout", "You have been pulled out of room because of no activity");
+            //    localStorage.setItem("room", undefined);
+            //    custom.openRooms();
+            //}
 
         });
 
 
-
-        window.chat.client.addChatMessage = function (message) {
-
-            var n = message.indexOf(":");
-
-            var name = message.substring(0, n);
-
-            message = message.substring(n + 2, message.length);
-
-
-            var msg = custom.buildMsg(name, message);
-
-            custom.informMessage(msg, "Gapshap", false);
-
-            if (window.background) {
-                custom.showNotification(name, encodedMsg);
-            }
-
-        };
-        // Personal Message from some one.
-        window.chat.client.recievePersonalChat = function (message, by) {
-
-            Message(message, by, false);
-            if (window.background) {
-                custom.showNotification(by, message);
-            }
-        }
-
-
-        // Add msg sent by me to personal window.chat window 
-        window.chat.client.byPersonalChat = function (message, by) {
-
-            var yourname = localStorage.getItem("Name");
-
-            if ($('div#' + by).length == 0) {
-
-                var parentDiv = custom.buildChatWindow(by);
-
-                $('#content').append(parentDiv);
-
-                window.scroller[by] = $("#" + by + " .MainComments").scroller({
-                    lockBounce: false
-                });
-            }
-
-            if (window.activeUser != by)
-                $('#userList #' + by).parent().css("background-color", "orange");
-
-
-            var msg = custom.buildMsg(yourname, message);
-
-            $('div#' + by + ' .ChatWindow').append(msg);
-
-            msg.focus();
-
-            if (window.background) {
-                custom.showNotification(by, message);
-            }
-
-            custom.scrollOnMessage(by);
-        }
+         
         var JoinRoom = function (groupname, name) {
-            window.chat.server.joinRoom(groupname, name);
+           // window.chat.server.joinRoom(groupname, name);
         };
 
         function successHandler(result) {
@@ -278,44 +163,10 @@ define(['require', 'CustomFunctions'],
         };
 
 
-
-        var Message = function (message, by, left) {
-
-            var divExist = true;
-
-            if ($('div#' + by).length == 0) {
-
-                divExist = false;
-
-                if (!left) {
-                    var parentDiv = custom.buildChatWindow(by);
-
-                    $('#content').append(parentDiv);
-
-                    window.scroller[by] = $("#" + by + " .MainComments").scroller({
-                        lockBounce: false
-                    });
-                }
-            }
-
-            if (left && !divExist) {
-                return;
-            }
-
-            if (window.activeUser != by)
-                $('#userList #' + by).parent().css("background-color", "orange");
-
-
-            var msg = custom.buildMsg(by, message);
-
-            $('div#' + by + ' .ChatWindow').append(msg);
-
-            custom.scrollOnMessage(by);
-
-        };
+ 
 
         var SendGCMID = function (name, GCMId) {
-            window.chat.server.updateUserGCMID(name, GCMId);
+           
         };
 
         //var signalr = {
@@ -358,16 +209,11 @@ define(['require', 'CustomFunctions'],
                         }
 
 
-                        JoinRoom(room, name);
-                        custom.show('afui', true);
-                        custom.show('loading', false);
+                       // JoinRoom(room, name);
+                       
                     });
 
-                } else {
-
-                    alert("please check your network.");
-                    custom.openRooms();
-                }
+                }  
             },
             startConnection: function () {
 
@@ -375,61 +221,17 @@ define(['require', 'CustomFunctions'],
 
                     $.connection.hub.start().done(function () {
 
-                        var name = localStorage.getItem("tempName");
+                        //var name = localStorage.getItem("tempName");
 
-                        var uniqueId = localStorage.getItem("uniqueId");
-
-                        window.chat.server.registerUser(uniqueId, name);
+                        //var uniqueId = localStorage.getItem("uniqueId");
+                        window.game.server.sendOfflineMessage("me", "my", "self");
+                   //     window.chat.server.registerUser(uniqueId, name);
 
                     });
 
                 } else {
                     alert("please check your network.");
                 }
-            },
-            leaveRoom: function (groupname, name) {
-
-                var myClientId = localStorage.getItem("ConnId");
-                localStorage.setItem("room", undefined);
-                window.chat.server.leaveRoom(groupname, name, myClientId);
-
-                if (tryingToReconnect) {
-                    custom.openRooms();
-                }
-            },
-
-
-            SendGroupMessage: function (grpName, name, message) {
-                window.chat.server.sendGroupMessage(grpName, name, message);
-            },
-            onOffline: function () {
-                alert("please check your network.")
-                custom.openRooms();
-            },
-            Message: Message,
-            // Send personal message
-            SendPersonalMessage: function (name, message, by) {
-                window.chat.server.sendPersonalMessage(name, message, by);
-            },
-
-
-            // Send group message
-            SendMessage: function () {
-                var name = localStorage.getItem("Name");
-                var Message = $("#HomeMessage").val();
-
-                if (Message == "") {
-                    return;
-                }
-
-                var room = localStorage.getItem("room");
-                if (window.activeUser == "") {
-                    this.SendGroupMessage(room, name, Message);
-                } else {
-                    this.SendPersonalMessage(window.activeUser, Message, name);
-                }
-
-                $("#HomeMessage").val("");
             }
         };
     });

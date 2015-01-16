@@ -24,9 +24,7 @@ function (require,signal) {
 
         document.addEventListener("backbutton", function () {
 
-            var name = localStorage.getItem("Name");
-            var room = localStorage.getItem("room");
-            signal.leaveRoom(room, name);
+    
 
         }, false);
 
@@ -42,14 +40,14 @@ function (require,signal) {
         window.background = false;
     };
     var onDeviceReady = function () {                             // called when Cordova is ready
-        if (window.Cordova && navigator.splashscreen) {
-
+        if (window.Cordova) { 
 
             readyFunction();
         }
     };
     var readyFunction = function () {
 
+        $('.ui-loader-default').remove();
 
         signal.startConnection();
 
@@ -59,7 +57,7 @@ function (require,signal) {
 
 
 
-        $('.ui-loader-default').remove();
+      
 
         //$('#start').click(function () {
         //    $('#outer-dropzone').addClass("dropzone");
