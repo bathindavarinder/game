@@ -13,14 +13,14 @@ function (require, signal) {
 
         $('#outer-dropzone').css('height', 4 * (height / 10));
 
-        $('#outer-dropzone').css('width', 5 * (width / 10));
+        $('#outer-dropzone').css('width',9 * (width / 10));
 
-        var size = 5 * (width / 10) + "px " + 4 * (height / 10) + "px";
+        var size = 9 * (width / 10) + "px " + 4 * (height / 10) + "px";
         $('#outer-dropzone').css('background-size', size);
 
 
         $('#Message').css('height', (height / 5));
-
+        $('#Message').css('width', 9 * (width / 10));
         bindEvents();
     };
     var bindEvents = function () {
