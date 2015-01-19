@@ -1,4 +1,32 @@
 ﻿
+.notify {
+    background-color:#e3f7fc; 
+    color:#555; 
+    border:.1em solid;
+    border-color: #8ed9f6;
+    border-radius:10px;
+    font-family:Tahoma,Geneva,Arial,sans-serif;
+    font-size:1.1em;
+    padding:10px 10px 10px 10px;
+    margin:10px;
+    cursor: default;
+    width:auto;
+    float:left;
+    position:relative;
+    z-index:199;
+}
+#timer {
+    border-radius:10px;
+    border-color: #8ed9f6;
+    background-color:#e3f7fc; 
+    float:left;
+    position:relative;
+    z-index:199;
+}
+.notify-yellow { background: #fff8c4; border-color: #f7deae; }
+.notify-red { background: #ffecec; border-color: #fad9d7; }
+.notify-green { background: #e9ffd9; border-color: #D1FAB6; }
+
 #navlist {
     position: relative;
 }
@@ -184,12 +212,18 @@
     height: 79px;
     background: url('../img/WZ9Od.gif') no-repeat;
     background-size: 1300% 500%;
+    /*display:inline-block;*/
 }
 .card-wide {
     width: 100px;
 }
 .card-high {
     height: 130px;
+}
+
+.thrownCard {
+    float:left;
+    /*clear:both;*/
 }
 
 /**

@@ -24,8 +24,7 @@ function (require,signal) {
 
         document.addEventListener("backbutton", function () {
 
-    
-
+            window.location = "index.html";
         }, false);
 
         document.addEventListener("pause", pauseapp, false);
@@ -52,13 +51,7 @@ function (require,signal) {
         signal.startConnection();
 
         window.background = false;
-
         
-
-
-
-      
-
         //$('#start').click(function () {
         //    $('#outer-dropzone').addClass("dropzone");
 
