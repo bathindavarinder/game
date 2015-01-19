@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/bhabo.css" />
-
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-    
+
 
 
     <script type="text/javascript" src="js/jquery.signalR-2.1.2.js"></script>
@@ -22,9 +22,9 @@
     <script src="intelxdk.js"></script>
     <!-- phantom library, needed for Cordova api calls -->
     <script src="cordova.js"></script>
-    
+
     <script src="local-notification.js"></script>
-    
+
     <script src="xhr.js"></script>
     <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
     <script type="text/javascript" charset="utf-8" src="SQLitePlugin.js"></script>
@@ -122,14 +122,15 @@
                     if (localStorage.getItem("cardType") == "") {
                         localStorage.setItem("cardType", event.relatedTarget.attributes["data-card"].value)
                     }
+                    $('.dropcan').removeClass('dropcan');
                     //event.relatedTarget.classList.add("thrownCard");
-                    $('.dropcan').removeClass("dropcan");
+
+
                     if (!window.reconnecting) {
                         window.game.server.throwCard(event.relatedTarget.id, UserName, Group, hasCard, localStorage.getItem("cardType"));
                     } else {
                         localStorage.setItem("SendCard", event.relatedTarget.id + "$" + UserName + "$" + Group + "$" + hasCard + "$" + localStorage.getItem("cardType"));
                     }
-
 
                 } else {
 
@@ -151,14 +152,36 @@
             }
         });
 
+
     </script>
 </head>
-<body> 
-    <div id="timer"> </div>
-    <div id="outer-dropzone" class="dropzone">
-         <div id="Message" class="notify notify-green">
+<body>
+   <div class="container">
+        <div id="sidebar">
+             <ul id="users"> 
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="swipe-area"></div>
+            <!--<div id="timer"> </div>-->
+
+            <a href="#" data-toggle=".container" id="sidebar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="content">
+                <div id="Message" class="notify notify-green">
+                </div>
+                <div id="outer-dropzone" class="dropzone">
+                </div>
+                <div id="Cards">
+
+                </div>
+            </div>
         </div>
     </div>
+
 
 </body>
 </html>
