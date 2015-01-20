@@ -25,7 +25,7 @@ define(['require', 'CustomFunctions'],
             localStorage.setItem("cardType", "");
             resettimer();
             $('.card').remove();
-            $('#Message').append("Game Closed as all left.");
+            showNotification("Game Closed as all left.");
         };
 
         window.game.client.TimedOut = function () {
@@ -33,7 +33,7 @@ define(['require', 'CustomFunctions'],
             resettimer();
 
             $('.card').remove();
-            $('#Message').append("You are removed from this game.");
+            showNotification("You are removed from this game.");
         };
 
         function resettimer() {
