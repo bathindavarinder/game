@@ -1,27 +1,37 @@
 ﻿//var room = {
-define(['require', 'GameHub'],
-function (require, signal) {
+define(['require', 'GameHub', 'CustomFunctions'],
+function (require, signal, custom) {
 
     // Application Constructor
     var initialize = function () {
 
-        var height = $(window).height();
-        var width = $(window).width();
-
-        $('body').css('height', height);
-        $('.container').css('height', height);
-
-        $('#outer-dropzone').css('height', 4 * (height / 10));
-
-        $('#outer-dropzone').css('width',9 * (width / 10));
-
-        var size = 9 * (width / 10) + "px " + 4 * (height / 10) + "px";
-        $('#outer-dropzone').css('background-size', size);
+        if (custom.CheckConnection()) {
 
 
-        $('#Message').css('height', (height / 5));
-        $('#Message').css('width', 9 * (width / 10));
-        bindEvents();
+
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+
+            
+
+            $('body').css('height', height);
+            $('.container').css('height', height);
+
+            $('#outer-dropzone').css('height', 4 * (height / 10));
+
+            $('#outer-dropzone').css('width', width);
+
+            var size = width + "px " + 4 * (height / 10) + "px";
+            $('#outer-dropzone').css('background-size', size);
+
+
+            $('#Message').css('height', (height / 5));
+            $('#Message').css('width', width);
+            bindEvents();
+        } else {
+            alert("Please check your network connection !");
+            window.location = "index.html";
+        }
     };
     var bindEvents = function () {
 
@@ -83,21 +93,39 @@ function (require, signal) {
         $("[data-toggle]").click(function () {
             var toggle_el = $(this).data("toggle");
             $(toggle_el).toggleClass("open-sidebar");
+            event.stopPropagation();
+        });
+        $('#sidebar').click(function (event) {
+            event.stopPropagation();
+        });
+        $('.container').click(function (event) {
+
+            //if (!$(event.target).closest('#sidebar').length) {
+
+            //}
+            $(".container").removeClass("open-sidebar");
+            return false;
         });
 
-        $(".swipe-area").swipe({
-            swipeStatus: function (event, phase, direction, distance, duration, fingers) {
-                if (phase == "move" && direction == "right") {
-                    $(".container").addClass("open-sidebar");
-                    return false;
-                }
-                if (phase == "move" && direction == "left") {
-                    $(".container").removeClass("open-sidebar");
-                    return false;
-                }
-            }
-        });
 
+
+        //$("body").click(function () {
+        //    $(".container").removeClass("open-sidebar");
+        //    return false;
+        //});
+
+        //$(".swipe-area").swipe({
+        //    swipeStatus: function (event, phase, direction, distance, duration, fingers) {
+        //        if (phase == "move" && direction == "right") {
+        //            $(".container").addClass("open-sidebar");
+        //            return false;
+        //        }
+        //        if (phase == "move" && direction == "left") {
+        //            $(".container").removeClass("open-sidebar");
+        //            return false;
+        //        }
+        //    }
+        //});
 
         signal.startConnection();
 

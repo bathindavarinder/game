@@ -28,8 +28,12 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("backbutton", function () {
-
-            navigator.app.exitApp();
+            alert("exit clicked");
+            if (navigator.app) {
+                navigator.app.exitApp();
+            } else {
+                alert("app not exist");
+            }
         }, false);
         
     },

@@ -444,7 +444,7 @@ define(['require', 'CustomFunctions'],
 
                 var yourname = localStorage.getItem("Name");
 
-                window.game.server.Register(yourname);
+                $.connection.gameHub.server.Register(yourname);
 
                 if (localStorage.getItem("SendCard") && localStorage.getItem("SendCard") != "") {
 
@@ -452,7 +452,7 @@ define(['require', 'CustomFunctions'],
 
                     var details = card.split('$');
 
-                    window.game.server.throwCard(details[0], details[1], details[2], details[3], details[4]);
+                    $.connection.gameHub.server.throwCard(details[0], details[1], details[2], details[3], details[4]);
 
                     localStorage.setItem("SendCard", "")
                 }
