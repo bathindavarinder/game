@@ -27,14 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener("backbutton", function () {
-            alert("exit clicked");
-            if (navigator.app) {
-                navigator.app.exitApp();
-            } else {
-                alert("app not exist");
-            }
-        }, false);
+        
         
     },
     // deviceready Event Handler

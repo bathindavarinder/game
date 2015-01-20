@@ -19,27 +19,63 @@ define(['require', 'CustomFunctions'],
 
         var tryingToReconnect = false;
 
-        window.game.client.TimedOut = function () {
-            //ResetTimer();
-
-            //$('.card').remove();
-            //$('#Message').append("You are removed from this game.");
-        };
+        
 
         window.game.client.GameClosed = function () {
-            //localStorage.setItem("cardType", "");
-            //ResetTimer();
-            //$('.card').remove();
-            //$('#Message').append("Game Closed as all left.");
+            localStorage.setItem("cardType", "");
+            resettimer();
+            $('.card').remove();
+            $('#Message').append("Game Closed as all left.");
+        };
+
+        window.game.client.TimedOut = function () {
+
+            resettimer();
+
+            $('.card').remove();
+            $('#Message').append("You are removed from this game.");
         };
 
         function resettimer() {
-            //window.timeout = false;
-            //mystopfunction();
-            //window.timein = 50;
-            //document.getelementbyid("timer").innerhtml = "";
+            window.timeout = false;
+            myStopFunction();
+            window.timein = 50;
+            document.getElementById("timer").innerhtml = "";
         }
 
+        function myStopFunction() {
+            clearInterval(window.myVar);
+        }
+
+        function myTimer() {
+            document.getElementById("timer").innerHTML = window.Userturn + "'s turn : " + window.timeIn + " seconds left.";
+            window.timeIn = parseFloat(window.timeIn) - parseFloat(1);
+
+            if (window.timeIn == 0) {
+                if (window.Userturn == localStorage.getItem("Name")) {
+                    window.game.server.asktimeOut(window.Userturn, window.gameJoin, window.cardJoin);
+                    resettimer();
+                }
+            }
+        }
+
+
+
+        window.game.client.StartTimer = function (user, game, card) {
+
+            window.timeIn = 50;
+
+            window.timeout = true;
+            window.Userturn = user;
+            window.gameJoin = game;
+
+            if (card == "disc") {
+                card = localStorage.getItem("cardType");
+            }
+
+            window.cardJoin = card;
+            window.myVar = setInterval(function () { myTimer() }, 1000); 
+        };
 
         window.game.client.updateUserStatus = function (user, status) {
             $('#' + user).text(user + "(" + status + ")");
@@ -60,26 +96,8 @@ define(['require', 'CustomFunctions'],
                     $('#users').append(user);
                 }
             });
-        }
+        } 
 
-
-
-        window.game.client.StartTimer = function (user, game, card) {
-
-            //window.timeIn = 50;
-
-            //window.timeout = true;
-            //window.Userturn = user;
-            //window.myVar = setInterval(function () { myTimer() }, 1000);
-
-            //window.myTimeout = setTimeout(function () {
-            //    if (window.timeout) {
-            //        window.game.server.asktimeOut(user, game, card);
-            //    }
-            //    ResetTimer();
-
-            //}, 50000);
-        };
 
         window.game.client.registered = function (name) {
             //  alert("you are registered");
@@ -112,8 +130,8 @@ define(['require', 'CustomFunctions'],
                 localStorage.setItem("cardType", "");
             }, 4000);
 
-            $('.card:not(.active)').remove();
-            //ResetTimer();
+
+            resettimer();
             //showNotification("Thoka given to " + cs);
             var Cards = cs.split(';');
 
@@ -139,7 +157,7 @@ define(['require', 'CustomFunctions'],
 
         window.game.client.thrownCard = function (user, card) {
 
-            //ResetTimer();
+            resettimer();
 
             var idandcard = card.split('?');
 
@@ -155,15 +173,6 @@ define(['require', 'CustomFunctions'],
             showNotification(user + " has thrown '" + idandcard[1].split('-')[2] + "' of " + cardtype);
         };
 
-        function myStopFunction() {
-            //clearInterval(window.myVar);
-            //clearTimeout(window.myTimeout);
-        }
-
-        function myTimer() {
-            //document.getElementById("timer").innerHTML = window.Userturn + "'s turn : " + window.timeIn + " seconds left.";
-            //window.timeIn = parseFloat(window.timeIn) - parseFloat(1);
-        }
 
 
 
@@ -177,7 +186,7 @@ define(['require', 'CustomFunctions'],
                 $('.card:not(.active)').remove();//.css("visibility", "hidden");
                 showNotification(user + " will start.");
                 localStorage.setItem("cardType", "");
-            }, 4000);
+            }, 5000);
 
 
         };
@@ -191,7 +200,9 @@ define(['require', 'CustomFunctions'],
 
 
         window.game.client.yourTurn = function (card) {
-
+            if (card == "disc") {
+                card = localStorage.getItem("cardType");
+            }
             localStorage.setItem("cardType", card);
 
             if (!$('.' + card + '.active').length) {
@@ -242,6 +253,12 @@ define(['require', 'CustomFunctions'],
         var havHukamA = false;
 
         window.game.client.sendCards = function (cards) {
+
+            $("#loading").fadeOut(400);
+
+            $(".container").fadeIn(400);
+        
+           
             $('.card').remove();
             var Cards = cards.split(";");
             var x = 0;
@@ -260,12 +277,6 @@ define(['require', 'CustomFunctions'],
                 $('#Cards').append(card);
 
 
-                //$('#' + idandcard[0]).css({
-                //    'transform': 'translate(' + x + 'px,' + y + 'px)',
-                //    '-webkit-transform': 'translate(' + x + 'px,' + y + 'px)',
-                //    '-moz-transform': 'translate(' + x + 'px,' + y + 'px)',
-                //    '-ms-transform': 'translate(' + x + 'px,' + y + 'px)',
-                //    '-o-transform': 'translate(' + x + 'px,' + y + 'px)'
 
                 //});
                 x = x + 30;
@@ -444,7 +455,7 @@ define(['require', 'CustomFunctions'],
 
                 var yourname = localStorage.getItem("Name");
 
-                $.connection.gameHub.server.Register(yourname);
+                window.game.server.Register(yourname);
 
                 if (localStorage.getItem("SendCard") && localStorage.getItem("SendCard") != "") {
 
@@ -452,7 +463,7 @@ define(['require', 'CustomFunctions'],
 
                     var details = card.split('$');
 
-                    $.connection.gameHub.server.throwCard(details[0], details[1], details[2], details[3], details[4]);
+                    window.game.server.throwCard(details[0], details[1], details[2], details[3], details[4]);
 
                     localStorage.setItem("SendCard", "")
                 }

@@ -282,6 +282,21 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.vibration/www/vibration.js",
+        "id": "org.apache.cordova.vibration.notification",
+        "merges": [
+            "navigator.notification",
+            "navigator"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.device/www/device.js",
         "id": "org.apache.cordova.device.device",
         "clobbers": [
@@ -303,6 +318,9 @@ module.exports.metadata =
     "org.apache.cordova.media": "0.2.15",
     "org.apache.cordova.network-information": "0.2.14",
     "org.apache.cordova.splashscreen": "0.3.5",
+    "org.apache.cordova.inappbrowser": "0.5.4",
+    "org.apache.cordova.console": "0.2.12",
+    "org.apache.cordova.vibration": "0.3.12",
     "org.apache.cordova.device": "0.2.13"
 }
 // BOTTOM OF METADATA

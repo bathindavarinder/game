@@ -8,10 +8,9 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/bhabo.css" />
     <link rel="stylesheet" type="text/css" href="css/icons.css" />
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    
 
 
     <script type="text/javascript" src="js/jquery.signalR-2.1.2.js"></script>
@@ -20,6 +19,11 @@
 
 
     <script type="text/javascript" charset="utf-8" src="js/handlebars-v2.0.0.js"></script>
+
+    <script src="js/overthrow-detect.js"></script>
+	<script src="js/overthrow-polyfill.js"></script>
+	<script src="js/overthrow-toss.js"></script>
+	<script src="js/overthrow-init.js"></script>
 
     <script src="intelxdk.js"></script>
     <!-- phantom library, needed for Cordova api calls -->
@@ -158,6 +162,9 @@
     </script>
 </head>
 <body>
+
+      <div id="loading">Game will start in a moment....</div>
+
    <div class="container">
         <div id="sidebar">
              <ul id="users"> 
@@ -172,7 +179,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </a>
-            <div class="content">
+            <div class="content overthrow">
                 <div id="Message" class="notify notify-green">
                 </div>
                 <div id="outer-dropzone" class="dropzone">

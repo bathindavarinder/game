@@ -55,6 +55,14 @@
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -76,7 +84,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
@@ -191,6 +199,15 @@
             "PACKAGE_NAME": "io.cordova.bhabo"
         },
         "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "io.cordova.bhabo"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "io.cordova.bhabo"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "io.cordova.bhabo"
+        },
+        "org.apache.cordova.vibration": {
             "PACKAGE_NAME": "io.cordova.bhabo"
         }
     },

@@ -156,7 +156,7 @@
                     // set the parent windows navigator network object to the child window
                     navigator.network = window.top.navigator.network;
                 }
-
+              
                 // return the type of connection found
                 return ((navigator.network.connection.type === "none" || navigator.network.connection.type === null ||
                        navigator.network.connection.type === "unknown") ? false : true);

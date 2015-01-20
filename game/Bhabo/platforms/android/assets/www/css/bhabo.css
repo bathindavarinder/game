@@ -556,13 +556,13 @@
 
 #outer-dropzone { 
      background: url('../img/table.jpg') no-repeat;
-    background-size: 50%;
+    /*background-size: 50%;
     height: 40%;
-    width: 100%;
-  /*  -webkit-background-size: cover;
+    width: 100%;*/
+    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;*/
+  background-size: cover;
 }
 div#menu {
 		width: 30%;
@@ -645,7 +645,7 @@ div#menu {
 width: 100%;
 left: 0;
 top: 0;
-height: 8%;
+height: 5%;
 z-index: 0;
 background-color: #f3f3f3;
 }
@@ -695,9 +695,7 @@ background-color: #f3f3f3;
 .main-content .content{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-  /*height: 100%;*/
- overflow:hidden;
-/* padding-left: 60px; */
+   
 padding-top: 10px;
 width: 100%;
 clear: both;
@@ -734,3 +732,8 @@ clear: both;
     background-color: rgba(255,255,255,0.8);
 }
  
+ 
+.overthrow-enabled .overthrow {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}

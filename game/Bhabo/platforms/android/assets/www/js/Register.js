@@ -1,6 +1,6 @@
 ﻿//var room = {
-define(['require'],
-function (require) {
+define(['require','CustomFunctions'],
+function (require,custom) {
 
     // Application Constructor
     var initialize = function () {
@@ -17,6 +17,14 @@ function (require) {
 
             });
         }
+       
+        document.addEventListener("backbutton", function () {
+           
+            if (navigator.app) {
+                navigator.app.exitApp();
+            }  
+        }, false);
+
         document.addEventListener('deviceready', onDeviceReady, false);
          
 
@@ -69,8 +77,12 @@ function (require) {
 
         });
         $('#gameBtn').click(function () {
-
-            window.location = "bhabo.html";
+            if (custom.CheckConnection()) {
+                window.location = "bhabo.html";
+            }
+            else {
+                alert("Please check your network connection");
+            }
 
         });
 

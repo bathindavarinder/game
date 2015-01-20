@@ -12,21 +12,26 @@ function (require, signal, custom) {
             var width = window.innerWidth;
             var height = window.innerHeight;
 
+            var pixelRatio = window.devicePixelRatio || 1;
+
+            width = window.innerWidth * pixelRatio;
+            height = window.innerHeight * pixelRatio;
             
+            $('.main-content').css('height', height);
+              
+           
+            $('.content').css('height', 19 * (height / 20));
 
-            $('body').css('height', height);
-            $('.container').css('height', height);
+          $('#outer-dropzone').css('height', 3 * (height / 10));
 
-            $('#outer-dropzone').css('height', 4 * (height / 10));
+         ////   $('#outer-dropzone').css('width', width);
 
-            $('#outer-dropzone').css('width', width);
-
-            var size = width + "px " + 4 * (height / 10) + "px";
-            $('#outer-dropzone').css('background-size', size);
+         //   //var size = width + "px " + 4 * (height / 10) + "px";
+         //   //$('#outer-dropzone').css('background-size', size);
 
 
-            $('#Message').css('height', (height / 5));
-            $('#Message').css('width', width);
+         //   $('#Message').css('height', (height / 5));
+           // $('#Message').css('width', width);
             bindEvents();
         } else {
             alert("Please check your network connection !");
@@ -99,33 +104,21 @@ function (require, signal, custom) {
             event.stopPropagation();
         });
         $('.container').click(function (event) {
-
-            //if (!$(event.target).closest('#sidebar').length) {
-
-            //}
+             
             $(".container").removeClass("open-sidebar");
-            return false;
+            return true;
         });
+         
+        document.addEventListener('touchmove', function (e) {
+            $(".container").removeClass("open-sidebar");
+        }, false);
 
-
-
-        //$("body").click(function () {
-        //    $(".container").removeClass("open-sidebar");
-        //    return false;
-        //});
-
-        //$(".swipe-area").swipe({
-        //    swipeStatus: function (event, phase, direction, distance, duration, fingers) {
-        //        if (phase == "move" && direction == "right") {
-        //            $(".container").addClass("open-sidebar");
-        //            return false;
-        //        }
-        //        if (phase == "move" && direction == "left") {
-        //            $(".container").removeClass("open-sidebar");
-        //            return false;
-        //        }
-        //    }
-        //});
+        $(".main-content").swipe({
+            swipeStatus: function (event, phase, direction, distance, duration, fingers) { 
+                   
+                    return true; 
+            }
+        });
 
         signal.startConnection();
 
