@@ -69,6 +69,7 @@ C:\Game\game\game\Bhabo\platforms\android\assets\www\css\icons.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css\index.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css\jquery.mobile-1.0.1.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\css\jquery.mobile.structure-1.0.1.css \
+C:\Game\game\game\Bhabo\platforms\android\assets\www\img\ajax-loader.gif \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\img\logo.png \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\img\table.jpg \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\img\WZ9Od.gif \
