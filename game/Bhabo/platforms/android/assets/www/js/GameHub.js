@@ -19,7 +19,7 @@ define(['require', 'CustomFunctions'],
 
         var tryingToReconnect = false;
 
-        
+
 
         window.game.client.GameClosed = function () {
             localStorage.setItem("cardType", "");
@@ -40,7 +40,7 @@ define(['require', 'CustomFunctions'],
             window.timeout = false;
             myStopFunction();
             window.timein = 50;
-            document.getElementById("timer").innerhtml = "";
+            document.getElementById("timer").innerHTML = "";
         }
 
         function myStopFunction() {
@@ -54,8 +54,8 @@ define(['require', 'CustomFunctions'],
             if (window.timeIn == 0) {
                 if (window.Userturn == localStorage.getItem("Name")) {
                     window.game.server.asktimeOut(window.Userturn, window.gameJoin, window.cardJoin);
-                    resettimer();
                 }
+                resettimer();
             }
         }
 
@@ -74,7 +74,7 @@ define(['require', 'CustomFunctions'],
             }
 
             window.cardJoin = card;
-            window.myVar = setInterval(function () { myTimer() }, 1000); 
+            window.myVar = setInterval(function () { myTimer() }, 1000);
         };
 
         window.game.client.updateUserStatus = function (user, status) {
@@ -96,7 +96,7 @@ define(['require', 'CustomFunctions'],
                     $('#users').append(user);
                 }
             });
-        } 
+        }
 
 
         window.game.client.registered = function (name) {
@@ -128,7 +128,7 @@ define(['require', 'CustomFunctions'],
                 showNotification("Thoka given to you.");
                 $('.card:not(.active)').remove();
                 localStorage.setItem("cardType", "");
-            }, 4000);
+            }, 1000);
 
 
             resettimer();
@@ -142,16 +142,10 @@ define(['require', 'CustomFunctions'],
                     var idandcard = name.split('?');
 
                     var cardtype = idandcard[1].split('-')[1];
-
-
-
                     //var card = '<div data-x="' + x + '" data-y="' + y + '" id="' + idandcard[0] + '" class="card mine ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ></div>';
                     var card = '<div id="' + idandcard[0] + '" class="animatedCard card mine thrownCard ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ></div>';
                     $('.content').append(card);
                 }
-
-
-
             });
         };
 
@@ -182,11 +176,11 @@ define(['require', 'CustomFunctions'],
             $('.card:not(.active)').addClass("animatedOutCard");
 
             setTimeout(function () {
-                showNotification("Turn Completed");
-                $('.card:not(.active)').remove();//.css("visibility", "hidden");
-                showNotification(user + " will start.");
-                localStorage.setItem("cardType", "");
-            }, 5000);
+            showNotification("Turn Completed");
+            $('.card:not(.active)').remove();//.css("visibility", "hidden");
+            showNotification(user + " will start.");
+            localStorage.setItem("cardType", "");
+            }, 2000);
 
 
         };
@@ -257,8 +251,8 @@ define(['require', 'CustomFunctions'],
             $("#loading").fadeOut(400);
 
             $(".container").fadeIn(400);
-        
-           
+
+
             $('.card').remove();
             var Cards = cards.split(";");
             var x = 0;

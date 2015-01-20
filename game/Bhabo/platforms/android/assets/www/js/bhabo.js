@@ -22,7 +22,7 @@ function (require, signal, custom) {
            
             $('.content').css('height', 19 * (height / 20));
 
-          $('#outer-dropzone').css('height', 3 * (height / 10));
+          $('#outer-dropzone').css('height', 2 * (height / 10));
 
          ////   $('#outer-dropzone').css('width', width);
 
