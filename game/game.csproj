@@ -61,26 +61,55 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bhabo\config.xml" />
+    <Content Include="Bhabo\www\appframework\af.ui.css" />
+    <Content Include="Bhabo\www\appframework\af.ui.jquery.min.js" />
+    <Content Include="Bhabo\www\appframework\ajax-loader.gif" />
+    <Content Include="Bhabo\www\appframework\appframework.ui.min.js" />
+    <Content Include="Bhabo\www\appframework\icons.css" />
+    <Content Include="Bhabo\www\appframework\jq.appframework.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.8tiles.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.actionsheet.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.css3animate.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.desktopBrowsers.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.msPointerEvents.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.passwordBox.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.popup.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.scroller.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.selectBox.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.slidemenu.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.touchEvents.js" />
+    <Content Include="Bhabo\www\appframework\plugins\af.touchLayer.js" />
+    <Content Include="Bhabo\www\appframework\Sendbtn1.jpg" />
+    <Content Include="Bhabo\www\appframework\svg-cards.png" />
     <Content Include="Bhabo\www\bhabo.html" />
     <Content Include="Bhabo\www\BhaboApp.js" />
     <Content Include="Bhabo\www\css\bhabo.css" />
+    <Content Include="Bhabo\www\css\cards.css" />
+    <Content Include="Bhabo\www\css\custom.css" />
+    <Content Include="Bhabo\www\css\customres.css" />
     <Content Include="Bhabo\www\css\index.css" />
     <Content Include="Bhabo\www\css\jquery.mobile-1.0.1.css" />
     <Content Include="Bhabo\www\css\jquery.mobile.structure-1.0.1.css" />
+    <Content Include="Bhabo\www\img\ajax-loader.gif" />
     <Content Include="Bhabo\www\img\logo.png" />
+    <Content Include="Bhabo\www\img\table.jpg" />
     <Content Include="Bhabo\www\img\WZ9Od.gif" />
+    <Content Include="Bhabo\www\index.html" />
     <Content Include="Bhabo\www\js\bhabo.js" />
     <Content Include="Bhabo\www\js\CustomFunctions.js" />
+    <Content Include="Bhabo\www\js\fastclick.js" />
     <Content Include="Bhabo\www\js\GameHub.js" />
     <Content Include="Bhabo\www\js\handlebars-v2.0.0.js" />
-    <Content Include="Bhabo\www\js\index.js" />
     <Content Include="Bhabo\www\js\interact-1.2.2.js" />
     <Content Include="Bhabo\www\js\interact-1.2.2.min.js" />
-    <Content Include="Bhabo\www\js\jquery.mobile-1.0.1.min.js" />
+    <Content Include="Bhabo\www\js\jquery-1.11.1.min.js" />
+    <Content Include="Bhabo\www\js\jquery.mobile-1.4.5.min.js" />
     <Content Include="Bhabo\www\js\jquery.signalR-2.1.2.js" />
     <Content Include="Bhabo\www\js\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Bhabo\www\js\Register.js" />
     <Content Include="Bhabo\www\js\require.js" />
     <Content Include="Bhabo\www\js\signalRHub.js" />
+    <Content Include="Bhabo\www\RegisterApp.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -5,11 +5,13 @@ define(['require', 'CustomFunctions'],
 
         $("#Message").slideUp(1);
 
-        if (window.Cordova) {
-            $.connection.hub.url = "http://bathindavarinder-001-site1.smarterasp.net/signalr";
-        }
+        // if (window.Cordova) {
+        $.connection.hub.url = "http://bathindavarinder-001-site1.smarterasp.net/signalr";
+        // }
+
 
         window.timeout = false;
+        window.dontreconnect = false;
 
         window.reconnecting = false;
 
@@ -19,8 +21,30 @@ define(['require', 'CustomFunctions'],
 
         var tryingToReconnect = false;
 
+        var UserName = localStorage.getItem("Name");
+        var Group = localStorage.getItem("Group");
 
+        var messageCount = 0;
 
+        function showNotification(Message) {
+
+            $('#Message').append("<li>" + Message + "</li><br>");
+            $('.msglink li').addClass("backColorOrange");
+            if (window.background && window.cordova) {
+                custom.showNotification("Bhabo", Message);
+            } 
+        }
+
+        SendMessage = function () {
+            var Message = $("#HomeMessage").val();
+
+            if (Message == "") {
+                return;
+            }
+            window.game.server.sendMessage(Group, UserName, Message);
+
+            $("#HomeMessage").val("");
+        }
         window.game.client.GameClosed = function () {
             localStorage.setItem("cardType", "");
             resettimer();
@@ -29,34 +53,46 @@ define(['require', 'CustomFunctions'],
         };
 
         window.game.client.TimedOut = function () {
-
-            resettimer();
-
+            window.dontreconnect = true;
+            resettimer(); 
             $('.card').remove();
-            showNotification("You are removed from this game.");
+            if (window.cordova) {
+                custom.showNotification("Bhabo", "You are removed from this game."); 
+            }
+            window.location = "index.html";
         };
 
+        var timerInterval;
         function resettimer() {
-            window.timeout = false;
-            myStopFunction();
-            window.timein = 50;
             document.getElementById("timer").innerHTML = "";
+            window.timein = 50;
+            window.timeout = false;
+            
         }
 
         function myStopFunction() {
             clearInterval(window.myVar);
+            window.myVar = undefined;
         }
 
         function myTimer() {
-            document.getElementById("timer").innerHTML = window.Userturn + "'s turn : " + window.timeIn + " seconds left.";
-            window.timeIn = parseFloat(window.timeIn) - parseFloat(1);
-
             if (window.timeIn == 0) {
-                if (window.Userturn == localStorage.getItem("Name")) {
+                //if (window.Userturn == localStorage.getItem("Name")) {
                     window.game.server.asktimeOut(window.Userturn, window.gameJoin, window.cardJoin);
-                }
-                resettimer();
+                //}
+                    if (window.Userturn == localStorage.getItem("Name")) {
+                        window.dontreconnect = true;
+                        window.location = "index.html";
+                    }
+               
             }
+            if (window.timeIn <= 0) {
+                clearInterval(timerInterval);
+                resettimer();
+                return;
+            }
+            window.timeIn = parseFloat(window.timeIn) - parseFloat(1);
+            document.getElementById("timer").innerHTML = window.Userturn + "'s turn : " + window.timeIn + " seconds left.";
         }
 
 
@@ -74,7 +110,7 @@ define(['require', 'CustomFunctions'],
             }
 
             window.cardJoin = card;
-            window.myVar = setInterval(function () { myTimer() }, 1000);
+            timerInterval = setInterval(function () { myTimer() }, 2000);
         };
 
         window.game.client.updateUserStatus = function (user, status) {
@@ -100,10 +136,10 @@ define(['require', 'CustomFunctions'],
 
 
         window.game.client.registered = function (name) {
-            //  alert("you are registered");
+
         };
         window.game.client.sendConfirm = function (msg) {
-            //  alert(msg);
+
         };
 
         window.game.client.informGroupName = function (name) {
@@ -143,7 +179,7 @@ define(['require', 'CustomFunctions'],
 
                     var cardtype = idandcard[1].split('-')[1];
                     //var card = '<div data-x="' + x + '" data-y="' + y + '" id="' + idandcard[0] + '" class="card mine ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ></div>';
-                    var card = '<div id="' + idandcard[0] + '" class="animatedCard card mine thrownCard ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ></div>';
+                    var card = '<div id="' + idandcard[0] + '" class="animatedCard card mine thrownCard ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ><div class="select squaredThree"><input type="checkbox" value="None" class="squaredThreechk" name="check" /></div></div>';
                     $('.content').append(card);
                 }
             });
@@ -176,10 +212,10 @@ define(['require', 'CustomFunctions'],
             $('.card:not(.active)').addClass("animatedOutCard");
 
             setTimeout(function () {
-            showNotification("Turn Completed");
-            $('.card:not(.active)').remove();//.css("visibility", "hidden");
-            showNotification(user + " will start.");
-            localStorage.setItem("cardType", "");
+                showNotification("Turn Completed");
+                $('.card:not(.active)').remove();//.css("visibility", "hidden");
+                showNotification(user + " will start.");
+                localStorage.setItem("cardType", "");
             }, 2000);
 
 
@@ -220,35 +256,17 @@ define(['require', 'CustomFunctions'],
 
         };
 
-        var messageCount = 0;
-
-        function showNotification(Message) {
-
-            if (messageCount < 6) {
-                messageCount = messageCount + 1;
-            } else {
-                $('#Message').empty();
-                messageCount = 0;
-            }
-
-            $("#Message").slideDown(1000);
-            $('#Message').append("<div>" + Message + "</div>");
+      
 
 
-            setTimeout(function () {
-                $("#Message").slideUp(1000);
-            }, 5000);
-        }
-
-
-        var UserName = localStorage.getItem("Name");
-        var Group = localStorage.getItem("Group");
 
         var havHukamA = false;
 
         window.game.client.sendCards = function (cards) {
 
-            $("#loading").fadeOut(400);
+            custom.show('loading', false);
+
+            custom.show('afui', true);
 
             $(".container").fadeIn(400);
 
@@ -267,7 +285,7 @@ define(['require', 'CustomFunctions'],
                 }
 
                 //var card = '<div data-x="' + x + '" data-y="' + y + '" id="' + idandcard[0] + '" class="card mine ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ></div>';
-                var card = '<div id="' + idandcard[0] + '" class="card thrownCard mine ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ></div>';
+                var card = '<div id="' + idandcard[0] + '" class="card thrownCard mine ' + idandcard[1] + ' ' + cardtype + ' active" data-card="' + cardtype + '" ><div class="select squaredThree"><input type="checkbox" value="None" class="squaredThreechk" name="check" /></div></div>';
                 $('#Cards').append(card);
 
 
@@ -402,7 +420,7 @@ define(['require', 'CustomFunctions'],
 
         $.connection.hub.reconnecting(function () {
             window.reconnecting = true;
-
+            $('#HeadName').text("Reconnecting..");
         });
 
         $.connection.hub.connectionSlow(function () {
@@ -412,13 +430,15 @@ define(['require', 'CustomFunctions'],
 
         $.connection.hub.reconnected(function () {
 
+            $('#HeadName').text("Reconnected");
+
             var myClientId = $.connection.hub.id;
 
             if (myClientId != localStorage.getItem("ConnId")) {
 
                 var yourname = localStorage.getItem("Name");
 
-                window.chat.server.updateConnId(localStorage.getItem("ConnId"), myClientId, yourname);
+                window.game.server.updateConnId(localStorage.getItem("ConnId"), myClientId, yourname);
 
                 localStorage.setItem("ConnId", myClientId);
             }
@@ -438,18 +458,24 @@ define(['require', 'CustomFunctions'],
         });
 
         $.connection.hub.disconnected(function () {
-
+            if (window.dontreconnect) {
+                return;
+            }
+            $('#HeadName').text("Disconnceted");
             window.reconnecting = true;
 
             $.connection.hub.start().done(function () {
 
+                $('#HeadName').text("Started Again");
                 var myClientId = $.connection.hub.id;
 
                 window.game = $.connection.gameHub;
 
                 var yourname = localStorage.getItem("Name");
 
-                window.game.server.Register(yourname);
+                window.game.server.register(yourname);
+
+                $('#HeadName').text("Registered Again.");
 
                 if (localStorage.getItem("SendCard") && localStorage.getItem("SendCard") != "") {
 
@@ -596,7 +622,8 @@ define(['require', 'CustomFunctions'],
                 } else {
                     alert("please check your network.");
                 }
-            }
+            },
+            SendMessage: SendMessage
         };
     });
 

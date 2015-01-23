@@ -12,7 +12,7 @@ function (require,custom) {
 
         if (!window.Cordova) {
             $(document).ready(function () {
-               
+                FastClick.attach(document.body);
                 readyFunction();
 
             });
@@ -41,7 +41,7 @@ function (require,custom) {
     };
     var onDeviceReady = function () {                             // called when Cordova is ready
         if (window.Cordova && navigator.splashscreen) {
-
+            FastClick.attach(document.body);
 
             readyFunction();
         }

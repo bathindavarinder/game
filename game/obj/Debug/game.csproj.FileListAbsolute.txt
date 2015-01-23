@@ -3,3 +3,8 @@ C:\game\game\bin\game.dll
 C:\game\game\bin\game.pdb
 C:\game\game\obj\Debug\game.dll
 C:\game\game\obj\Debug\game.pdb
+C:\Game\game\game\bin\game.dll
+C:\Game\game\game\bin\game.pdb
+C:\Game\game\game\obj\Debug\game.csprojResolveAssemblyReference.cache
+C:\Game\game\game\obj\Debug\game.dll
+C:\Game\game\game\obj\Debug\game.pdb
