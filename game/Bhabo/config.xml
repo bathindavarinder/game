@@ -2,11 +2,43 @@
 <widget id="io.cordova.bhabo" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Bhabo</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+       App to play bhabo
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="bathindavarinder@gmail.com" href="http://text.com">
+      Varinder KUmar
     </author>
     <content src="index.html" />
     <access origin="*" />
+  <!--<feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/contacts"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
+  <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <feature name="http://api.phonegap.com/1.0/media"/>
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/notification"/>
+  <feature name="Device">
+    <param name="android-package" value="org.apache.cordova.device.Device" />
+  </feature>-->
+  <preference name="SplashScreen" value="screen" />
+  <preference name="SplashScreenDelay" value="5000" />
+  <platform name="android">
+    <icon src="res/android/ldpi.png" density="ldpi" />
+    <icon src="res/android/mdpi.png" density="mdpi" />
+    <icon src="res/android/hdpi.png" density="hdpi" />
+    <icon src="res/android/xhdpi.png" density="xhdpi" /> 
+    <icon src="res/android/xxhdpi.png" density="xxhdpi" />
+    <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
+  </platform>
+
+  <platform name="android"> 
+    <splash src="res/android/screen/res-long-land-hdpi.png" density="land-hdpi"/>
+    <splash src="res/android/screen/res-long-land-ldpi.png" density="land-ldpi"/>
+    <splash src="res/android/screen/res-long-land-mdpi.png" density="land-mdpi"/>
+    <splash src="res/android/screen/res-long-land-xhdpi.png" density="land-xhdpi"/>
+
+    <splash src="res/android/screen/res-long-port-hdpi.png" density="port-hdpi"/>
+    <splash src="res/android/screen/res-long-port-ldpi.png" density="port-ldpi"/>
+    <splash src="res/android/screen/res-long-port-mdpi.png" density="port-mdpi"/>
+    <splash src="res/android/screen/res-long-port-xhdpi.png" density="port-xhdpi"/>
+  </platform>
 </widget>

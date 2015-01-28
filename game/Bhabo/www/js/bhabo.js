@@ -7,10 +7,9 @@ function (require, signal, custom) {
 
         if (custom.CheckConnection()) {
 
-            custom.show('loading', true);
+            custom.show('loading', false);
 
-          //  custom.show('afui', false);
-
+            custom.show('afui', true);
 
             var width = window.innerWidth;
             var height = window.innerHeight;
@@ -18,23 +17,11 @@ function (require, signal, custom) {
             var pixelRatio = window.devicePixelRatio || 1;
 
             width = window.innerWidth * pixelRatio;
-            height = window.innerHeight * pixelRatio;
-
-            //$('.main-content').css('height', height);
-
-
-            //$('.content').css('height', 19 * (height / 20));
+            height = window.innerHeight * pixelRatio; 
 
             $('#outer-dropzone').css('height', 3 * (height / 10));
-            $('#MainComments').css('height', height);
-            
-
-            ////   $('#outer-dropzone').css('width', width);
-
-            //   //var size = width + "px " + 4 * (height / 10) + "px";
-            //   //$('#outer-dropzone').css('background-size', size);
-
-
+            $('#MainComments').css('height', height); 
+ 
             $('#Message').css('min-height', 4 * (height / 10));
             $('#Message').css('max-height', 5 * (height / 10));
               $('#Message').css('width', 6 *(width/10));
@@ -58,11 +45,11 @@ function (require, signal, custom) {
 
         document.addEventListener("backbutton", function () {
 
-            if (messageopen) {
+            if (window.messageopen) {
                 window.Scroller.unlock();
                 window.MessageScroller.lock();
                 $("#Message").slideUp(1);
-                messageopen = false; 
+                window.messageopen = false;
                 $("#cardzone").show();
                 $('.msglink li').removeClass("backColorOrange");
                 return;
@@ -100,7 +87,7 @@ function (require, signal, custom) {
     var menuOpen = false;
     var menuDiv = "";
 
-    var messageopen = false;
+    window.messageopen = false;
     var readyFunction = function () {
 
         FastClick.attach(document.body);
@@ -116,7 +103,7 @@ function (require, signal, custom) {
 
                 $('.animatedCard').removeClass('animatedCard');
 
-                if (!messageopen) {
+                if (!window.messageopen) {
                     if ($("#Message li").length) {
                         window.Scroller.scrollToTop(1);
                         window.Scroller.lock();
@@ -124,7 +111,7 @@ function (require, signal, custom) {
                         $("#cardzone").hide();
                         $("#Message").slideDown(1);
                         $('#Message').scrollTop($('#Message li').last().position().top + 40);
-                        messageopen = true;
+                        window.messageopen = true;
                         
                     } 
                    
@@ -132,7 +119,7 @@ function (require, signal, custom) {
                     window.Scroller.unlock();
                     window.MessageScroller.lock();
                     $("#Message").slideUp(1);
-                    messageopen = false;
+                    window.messageopen = false;
                   
                     $("#cardzone").show();
 
@@ -152,6 +139,16 @@ function (require, signal, custom) {
             $('#HomeMessage').blur();
             signal.SendMessage();
         });
+
+        window.Scroller.scrollToTop(1);
+        window.Scroller.lock();
+        window.MessageScroller.unlock();
+        $("#cardzone").hide();
+        $("#Message").slideDown(1);
+        if ($("#Message li").length) {
+            $('#Message').scrollTop($('#Message li').last().position().top + 40);
+        }
+        window.messageopen = true;
 
 
         window.background = false;
@@ -179,16 +176,7 @@ function (require, signal, custom) {
 
         });
 
-       
-        //$('#HomeMessage').on("touchstart", function () {
-        //    $('#HomeMessage').trigger('click');
-        //    $('#HomeMessage').trigger('click');
-        //    $('#HomeMessage').trigger('click');
-        //    $('#HomeMessage').trigger('click');
-        //    $('#HomeMessage').trigger('click');
-          
-        //    $('#HomeMessage').focus();
-        //});
+        
 
         $(document).delegate(".squaredThreechk", "click", function (event) {
 
@@ -223,9 +211,10 @@ function (require, signal, custom) {
                     var Group = localStorage.getItem("Group");
 
                     $(card).removeClass('active');
-                    var hasCard = "true";
-                    if (!$('.card .active').length) {
-                        hasCard = "false"
+                    $(card).removeClass('mine');
+                    var lastCard = "true";
+                    if ($('.mine').length) {
+                        lastCard = "false"
                     }
                     if (localStorage.getItem("cardType") == "") {
                         localStorage.setItem("cardType", $(card).attr("data-card"))
@@ -235,9 +224,9 @@ function (require, signal, custom) {
 
 
                     if (!window.reconnecting) {
-                        window.game.server.throwCard(cardid, UserName, Group, hasCard, localStorage.getItem("cardType"));
+                        window.game.server.throwCard(cardid, UserName, Group, lastCard, localStorage.getItem("cardType"));
                     } else {
-                        localStorage.setItem("SendCard", cardid + "$" + UserName + "$" + Group + "$" + hasCard + "$" + localStorage.getItem("cardType"));
+                        localStorage.setItem("SendCard", cardid + "$" + UserName + "$" + Group + "$" + lastCard + "$" + localStorage.getItem("cardType"));
                     }
                     $('#messageTable').show();
                     $('#ThrowTable').hide();
@@ -249,18 +238,11 @@ function (require, signal, custom) {
                     alert("Its not your turn !");
                 }
             }
-
-            
+            return false;
         });
-       
-
-         
+        
     }
-
-
-
-
-
+     
 
     initialize();
 });

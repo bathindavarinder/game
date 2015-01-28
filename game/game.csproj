@@ -106,10 +106,12 @@
     <Content Include="Bhabo\www\js\jquery.mobile-1.4.5.min.js" />
     <Content Include="Bhabo\www\js\jquery.signalR-2.1.2.js" />
     <Content Include="Bhabo\www\js\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Bhabo\www\js\jquery.timer.js" />
     <Content Include="Bhabo\www\js\Register.js" />
     <Content Include="Bhabo\www\js\require.js" />
     <Content Include="Bhabo\www\js\signalRHub.js" />
     <Content Include="Bhabo\www\RegisterApp.js" />
+    <Content Include="Bhabo\www\signalr\hubs.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

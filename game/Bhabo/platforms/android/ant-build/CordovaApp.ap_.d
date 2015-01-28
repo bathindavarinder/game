@@ -1,5 +1,6 @@
 C:\Game\game\game\Bhabo\platforms\android\ant-build\CordovaApp.ap_ \
- : C:\Game\game\game\Bhabo\platforms\android\res\drawable\icon.png \
+ : C:\Game\game\game\Bhabo\platforms\android\res\drawable\appicon.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-hdpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-hdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-hdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-hdpi\ic_action_previous_item.png \
@@ -8,7 +9,9 @@ C:\Game\game\game\Bhabo\platforms\android\res\drawable-land-hdpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-land-ldpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-land-mdpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-land-xhdpi\screen.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-ldpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-ldpi\icon.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-mdpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-mdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-mdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-mdpi\ic_action_previous_item.png \
@@ -17,16 +20,22 @@ C:\Game\game\game\Bhabo\platforms\android\res\drawable-port-hdpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-port-ldpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-port-mdpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-port-xhdpi\screen.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-xhdpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xhdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xhdpi\ic_action_previous_item.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xhdpi\ic_action_remove.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxhdpi\appicon.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxhdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxhdpi\ic_action_previous_item.png \
 C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxhdpi\ic_action_remove.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxxhdpi\appicon.png \
+C:\Game\game\game\Bhabo\platforms\android\res\drawable-xxxhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\res\values\strings.xml \
 C:\Game\game\game\Bhabo\platforms\android\res\xml\config.xml \
-C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable\icon.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable\appicon.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-hdpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-hdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-hdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-hdpi\ic_action_previous_item.png \
@@ -35,7 +44,9 @@ C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-land-hdpi\scree
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-land-ldpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-land-mdpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-land-xhdpi\screen.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-ldpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-ldpi\icon.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-mdpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-mdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-mdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-mdpi\ic_action_previous_item.png \
@@ -44,13 +55,18 @@ C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-port-hdpi\scree
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-port-ldpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-port-mdpi\screen.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-port-xhdpi\screen.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xhdpi\appicon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xhdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xhdpi\ic_action_previous_item.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xhdpi\ic_action_remove.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxhdpi\appicon.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxhdpi\ic_action_next_item.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxhdpi\ic_action_previous_item.png \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxhdpi\ic_action_remove.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxxhdpi\appicon.png \
+C:\Game\game\game\Bhabo\platforms\android\ant-build\res\drawable-xxxhdpi\icon.png \
 C:\Game\game\game\Bhabo\platforms\android\assets\www \
 C:\Game\game\game\Bhabo\platforms\android\assets\_where-is-www.txt \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\appframework \
@@ -64,6 +80,7 @@ C:\Game\game\game\Bhabo\platforms\android\assets\www\index.html \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\plugins \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\RegisterApp.js \
+C:\Game\game\game\Bhabo\platforms\android\assets\www\signalr \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\appframework\af.ui.css \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\appframework\af.ui.jquery.min.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\appframework\ajax-loader.gif \
@@ -107,6 +124,7 @@ C:\Game\game\game\Bhabo\platforms\android\assets\www\js\jquery-1.11.1.min.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\jquery.mobile-1.4.5.min.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\jquery.signalR-2.1.2.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\jquery.signalR-2.1.2.min.js \
+C:\Game\game\game\Bhabo\platforms\android\assets\www\js\jquery.timer.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\Register.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\require.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\js\signalRHub.js \
@@ -183,4 +201,5 @@ C:\Game\game\game\Bhabo\platforms\android\assets\www\plugins\org.apache.cordova.
 C:\Game\game\game\Bhabo\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\plugins\org.apache.cordova.vibration\www \
 C:\Game\game\game\Bhabo\platforms\android\assets\www\plugins\org.apache.cordova.vibration\www\vibration.js \
+C:\Game\game\game\Bhabo\platforms\android\assets\www\signalr\hubs.js \
 C:\Game\game\game\Bhabo\platforms\android\ant-build\AndroidManifest.xml \

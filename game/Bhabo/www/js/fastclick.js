@@ -242,6 +242,9 @@
 			if ((deviceIsIOS && target.type === 'file') || target.disabled) {
 				return true;
 			}
+			if (target.type === 'text') {
+			    return true;
+			}
 
 			break;
 		case 'label':
@@ -263,11 +266,13 @@
 	FastClick.prototype.needsFocus = function(target) {
 		switch (target.nodeName.toLowerCase()) {
 		case 'textarea':
-			return false;
+			return true;
 		case 'select':
 			return !deviceIsAndroid;
 		case 'input':
-			switch (target.type) {
+		    switch (target.type) {
+		     case 'text':
+		         return true;
 			case 'button':
 			case 'checkbox':
 			case 'file':
@@ -575,9 +580,10 @@
 				this.targetElement = null;
 				return false;
 			}
-			//if (targetElement.nodeName.toLowerCase() == 'textarea') {
-			//    return false;
-			//}
+			if (targetElement.nodeName.toLowerCase() == 'textarea' || targetElement.nodeName.toLowerCase() == 'input') {
+			    this.focus(targetElement);
+			    return false;
+			}
 			this.focus(targetElement);
 			this.sendClick(targetElement, event);
 		 
